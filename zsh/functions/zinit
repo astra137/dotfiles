@@ -7,7 +7,7 @@ zinit() {
 
   autoload -Uz compinit
 
-  if [[ ! -f $zinit ]]; then
+  if [[ ! -f $zinit || $1 == 'force' ]]; then
     mkdir -p ${zinit:h}
     _zinit >! $zinit
     compinit -i -d $zcd
