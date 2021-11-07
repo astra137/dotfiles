@@ -1,0 +1,14 @@
+#! /bin/zsh
+
+autoload -Uz compile zrecompile
+
+zcompile $ZDOTDIR/.zwc \
+  $ZDOTDIR/src/* \
+  $ZDOTDIR/lib/pure/(async|prompt_pure_setup) \
+  $ZDOTDIR/lib/zsh-autosuggestions/zsh-autosuggestions.zsh \
+  $ZDOTDIR/lib/zsh-completions/src/* \
+  $ZDOTDIR/lib/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+zrecompile
+
+zsh -c "autoload -Uz compinit && compinit -i"

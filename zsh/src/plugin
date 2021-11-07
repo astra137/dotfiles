@@ -1,4 +1,7 @@
-#! /usr/bin/env zsh
+#! /bin/zsh
+
+# Disabled
+exit 1
 
 _realpath() { for f in "$@"; do echo ${f}(:A); done }
 
@@ -11,7 +14,7 @@ _git() {
 	fi
 }
 
-zplugin() {
+.plugin() {
 	local zcache=${ZSH_CACHE:-${XDG_CACHE_HOME:-~/.cache}/zsh}
 	local zname="$1"; shift;
 	local zpath="${zcache}/github/${zname}"
@@ -61,4 +64,4 @@ zplugin() {
 	done
 }
 
-zplugin "$@"
+.plugin "$@"

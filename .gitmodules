@@ -1,12 +1,12 @@
-[submodule "zsh/pure"]
-	path = zsh/pure
-	url = /Users/me/code/dotfiles/zsh/pure
-[submodule "zsh/zsh-autosuggestions"]
-	path = zsh/zsh-autosuggestions
-	url = /Users/me/code/dotfiles/zsh/zsh-autosuggestions
-[submodule "zsh/zsh-completions"]
-	path = zsh/zsh-completions
-	url = /Users/me/code/dotfiles/zsh/zsh-completions
-[submodule "zsh/zsh-syntax-highlighting"]
-	path = zsh/zsh-syntax-highlighting
-	url = /Users/me/code/dotfiles/zsh/zsh-syntax-highlighting
+[submodule "zsh/lib/pure"]
+	path = zsh/lib/pure
+	url = https://github.com/sindresorhus/pure
+[submodule "zsh/lib/zsh-autosuggestions"]
+	path = zsh/lib/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "zsh/lib/zsh-completions"]
+	path = zsh/lib/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions
+[submodule "zsh/lib/zsh-syntax-highlighting"]
+	path = zsh/lib/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting

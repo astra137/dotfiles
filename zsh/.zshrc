@@ -1,19 +1,4 @@
-#! /usr/bin/env zsh
-
-fpath=($ZDOTDIR/functions $fpath)
-autoload -Uz $fpath[1]/*(.:t) && zedinit
-
-zed git "https://github.com/sindresorhus/pure"
-fpath=($ZDOTDIR/pure $fpath)
-autoload -Uz promptinit && promptinit
-prompt pure
-
-zed git "https://github.com/zsh-users/zsh-autosuggestions"
-source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-zed git "https://github.com/zsh-users/zsh-completions"
-fpath=($ZDOTDIR/zsh-completions/src $fpath)
-autoload -Uz compinit && compinit
+#! /bin/zsh
 
 # unset HISTFILE
 # unset HISTSIZE
@@ -21,6 +6,7 @@ autoload -Uz compinit && compinit
 setopt hist_verify  # Confirm !!
 setopt no_clobber   # Require >! or >|
 
+# TODO
 # typeset -gH _comp_dumpfile=${_comp_dumpfile:-$XDG_CACHE_HOME/zsh/compdump}
 # [[ -f $_comp_dumpfile && ${${:-${ZDOTDIR:-$HOME}/.zshrc}:P} -nt $_comp_dumpfile ]] &&
 #     zf_rm -f $_comp_dumpfile
@@ -41,8 +27,20 @@ if [[ $(uname) == 'Darwin' ]] {
   alias reset_systemui="defaults delete com.apple.systemuiserver && killall SystemUIServer"
 }
 
-source <(direnv hook zsh)
+fpath+="$ZDOTDIR/.zwc"
+autoload -Uz zinit
 
-# INSTALL.md: Note the source command must be at the end of ~/.zshrc.
-zed git "https://github.com/zsh-users/zsh-syntax-highlighting"
-source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+autoload -Uz compinit && compinit -C
+
+# promptinit doesn't work with zwc, so add to fpath.
+fpath+="$ZDOTDIR/lib/pure"
+autoload -Uz promptinit && promptinit
+prompt pure
+
+# src/direnvinit: hook up direnv to chpwd and precmd
+autoload -Uz direnvinit && direnvinit
+
+source $ZDOTDIR/lib/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# last
+source $ZDOTDIR/lib/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
