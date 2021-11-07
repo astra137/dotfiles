@@ -4,6 +4,10 @@
 
 ## zsh
 
+```shell
+git clone --recurse-submodules -j8 https://github.com/astra137/dotfiles
+```
+
 ```zsh
 #! /usr/bin/env zsh
 # .zshenv
