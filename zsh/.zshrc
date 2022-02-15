@@ -10,12 +10,12 @@ setopt no_clobber   # Require >! or >|
 zstyle ':completion:*' menu select
 
 fpath+=$ZDOTDIR/lib/pure
+autoload -U promptinit && promptinit
+prompt pure
+
 fpath+=$ZDOTDIR/lib/zsh-completions/src
 . $ZDOTDIR/lib/zsh-autosuggestions/zsh-autosuggestions.zsh
 . $ZDOTDIR/lib/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-autoload -U promptinit && promptinit
-prompt pure
 
 alias l="exa -lF --color-scale -a --group-directories-first -b"
 alias ll="l -ghHiS --time-style long-iso --git"
