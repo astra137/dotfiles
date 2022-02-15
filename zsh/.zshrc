@@ -1,7 +1,5 @@
 #! /bin/zsh
 
-# zmodload zsh/zprof
-
 unset HISTFILE
 unset HISTSIZE
 unset SAVEHIST
@@ -18,6 +16,7 @@ zstyle ':completion:*' menu select
 # rustup completions zsh cargo > ~/.local/share/zsh/site-functions/_cargo
 fpath+=~/.local/share/zsh/site-functions
 
+zstyle :prompt:pure:git:stash show yes
 fpath+=$ZDOTDIR/lib/pure
 autoload -U promptinit && promptinit
 prompt pure
@@ -39,5 +38,3 @@ if [[ $(uname) == 'Darwin' ]] {
 if (( $+commands[direnv] )); then; . <(direnv hook zsh); fi
 
 autoload -Uz compinit && compinit -C
-
-# zprof
