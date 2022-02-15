@@ -5,6 +5,7 @@
 unset HISTFILE
 unset HISTSIZE
 unset SAVEHIST
+setopt histignorealldups
 setopt hist_verify  # Confirm !!
 setopt no_clobber   # Require >! or >|
 zstyle ':completion:*' menu select
