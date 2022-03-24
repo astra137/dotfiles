@@ -4,37 +4,21 @@ unset HISTFILE
 unset HISTSIZE
 unset SAVEHIST
 setopt histignorealldups
-setopt hist_verify  # Confirm !!
-setopt no_clobber   # Require >! or >|
-zstyle ':completion:*' menu select
-
-# User-scoped machine-local ZSH function path.
-# For example, on macOS, Brew's rustup-init puts binaries in ~/.cargo
-# ... which means /usr/local is the wrong place to add completions.
-# TODO: Use ~/.share instead? What is the right place?
-# rustup completions zsh > ~/.local/share/zsh/site-functions/_rustup
-# rustup completions zsh cargo > ~/.local/share/zsh/site-functions/_cargo
-fpath+=~/.local/share/zsh/site-functions
-
+setopt hist_verify
+setopt no_clobber
+zstyle ':completion:*' menu yes select
 zstyle :prompt:pure:git:stash show yes
-fpath+=$ZDOTDIR/lib/pure
-autoload -U promptinit && promptinit
-prompt pure
 
-fpath+=$ZDOTDIR/lib/zsh-completions/src
-. $ZDOTDIR/lib/zsh-autosuggestions/zsh-autosuggestions.zsh
-. $ZDOTDIR/lib/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+alias ll='exa -l --classify --color-scale --git --all --binary --group'
+alias lt='ll -T --level 3 --git-ignore --ignore-glob .git'
 
-alias l="exa -lF --color-scale -a --group-directories-first -b"
-alias ll="l -ghHiS --time-style long-iso --git"
-alias lla="ll -u -rs accessed"
-alias llc="ll -U -rs created"
-alias llt="exa -T --git-ignore"
-if [[ $(uname) == 'Darwin' ]] {
-  alias reset_launchpad="defaults write com.apple.dock ResetLaunchPad -bool true && killall Dock"
-  alias reset_systemui="defaults delete com.apple.systemuiserver && killall SystemUIServer"
-}
+if [[ $(uname) == 'Darwin' ]]; then
+  alias reset_launchpad='defaults write com.apple.dock ResetLaunchPad -bool true && killall Dock'
+  alias reset_systemui='defaults delete com.apple.systemuiserver && killall SystemUIServer'
+fi
 
-if (( $+commands[direnv] )); then; . <(direnv hook zsh); fi
-
-autoload -Uz compinit && compinit -C
+fpath+=$ZDOTDIR/functions
+autoload -U promptinit && promptinit && prompt pure
+. $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+. $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+autoload -Uz compinit && compinit

@@ -1,0 +1,2 @@
+#compdef deno
+source <(deno completions zsh)

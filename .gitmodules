@@ -10,3 +10,15 @@
 [submodule "zsh/lib/zsh-syntax-highlighting"]
 	path = zsh/lib/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule "zsh/plugins/pure"]
+	path = zsh/plugins/pure
+	url = https://github.com/sindresorhus/pure
+[submodule "zsh/plugins/zsh/plugins/pure"]
+	path = zsh/plugins/zsh/plugins/pure
+	url = https://github.com/sindresorhus/pure
+[submodule "zsh/plugins/zsh-autosuggestions"]
+	path = zsh/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "zsh/plugins/zsh-syntax-highlighting"]
+	path = zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
